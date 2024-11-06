@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Applications</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="authcontainer">
+
+        <div class="Auth" id="SignUp">
+            <form> 
+                <label for="SignUpUsername">SignUp : </label>
+                <input type="text"     id="SignUpUsername" placeholder="Username">
+                <input type="password" id="SignUpPassword" placeholder="Password">
+                <button type="button"  id="SignUpButton" onclick="SignUp()">Submit</button>
+            </form>
+        </div>
+
+        <div class="Auth" id="SignIn">
+            <form> 
+                <label for="SignInUsername">SignIn : </label>
+                <input type="text"     id="SignInUsername" placeholder="Username">
+                <input type="password" id="SignInPassword" placeholder="Password">
+                <button type="button"  id="SignInButton" onclick="SignIn()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="add todo">
+        <h1 id="AppName">Todo App</h1>
+        <hr>
+
+        <input type="text" id="AddTodoContent" placeholder="Add Todos">
+        <button type="button" onclick="AddTodo()">Add Todo</button>
+        <hr>
+        
+    </div>
+
+<!-- -------------------------------------------- -->
+    <div>
+        <h1>Todo List: </h1>
+        <div id="DisplayContent"></div>
+    </div>
+
+
+
+    <div>
+        <button onclick="Logout()">Logout</button>
+    </div>
+    
+
+<script src="script.js"></script>
+</body>
+</html>
