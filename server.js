@@ -1,7 +1,7 @@
 const express= require("express");
 const jwt = require("jsonwebtoken");
 const cors=require("cors");
-const { notEqual } = require("assert");
+
 
 const app= express();
 const JWT_SECRET="TODOAPP";
@@ -23,7 +23,7 @@ app.use(["/todo","/deletetodo","/updatetodo"],(req,res,next)=>{
         }
         else{
             res.status(401).json({
-                message:"Unable to log u in"
+                message:"Token missing. Unauthorized Access"
             })
         }
     }
@@ -33,6 +33,7 @@ app.use(["/todo","/deletetodo","/updatetodo"],(req,res,next)=>{
         })
     }
 })
+
 
 const User_Todo_List=[];
 
@@ -80,14 +81,13 @@ app.post("/signin",(req,res)=>{
 
 // Create a Todo
 app.post("/todo",(req,res)=>{
-    const content = req.body.content;
-    const linenumber= User_Todo_List.length;
-    const todo= `${linenumber}.  ${content}`
+    const {content} = req.body;
+
     const user=User_Todo_List.find((u)=>u.username===req.user.username);
 
     const newtodo = {
         id:Date.now(),
-        todo: todo
+        todo: content
     };
 
     user.todos.push(newtodo);
@@ -98,11 +98,12 @@ app.post("/todo",(req,res)=>{
     });    
 })
 
-// View the todos
+// View Todo
 app.get("/todo",(req,res)=>{
     const user = User_Todo_List.find((u)=>u.username===req.user.username);
     res.json(user.todos)
 })
+
 // Update the Todo 
 app.put("/todo/:id", (req, res) => {
     const id = req.params.id; // Use id as a string
@@ -134,6 +135,7 @@ app.put("/todo/:id", (req, res) => {
     });
 });
 
+// Delete Todo
 app.delete("/todo/:id",(req,res)=>{
     const user = User_Todo_List.find((u)=>u.username===req.user.username);
     const id=parseInt(req.params.id);
@@ -162,6 +164,9 @@ app.delete("/todo/:id",(req,res)=>{
 
 
 })
+
+
+
 
 
 const port=3000;
