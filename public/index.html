@@ -3,57 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Applications</title>
+    <title>Todo Application</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="authcontainer">
-
-        <div class="Auth" id="SignUp">
+    <!-- Authentication Section -->
+    <div class="auth-container">
+        <!-- Sign Up Form -->
+        <div class="auth" id="SignUp">
             <form> 
-                <label for="SignUpUsername">SignUp : </label>
-                <input type="text"     id="SignUpUsername" placeholder="Username">
-                <input type="password" id="SignUpPassword" placeholder="Password">
-                <button type="button"  id="SignUpButton" onclick="SignUp()">Submit</button>
+                <label for="SignUpUsername">Sign Up: </label>
+                <input type="text" id="SignUpUsername" placeholder="Username" name="SignUpUsername">
+                <input type="password" id="SignUpPassword" placeholder="Password" name="SignUpPassword">
+                <button type="button" id="SignUpButton" onclick="SignUp()">Submit</button>
             </form>
         </div>
 
-        <div class="Auth" id="SignIn">
+        <!-- Sign In Form -->
+        <div class="auth" id="SignIn">
             <form> 
-                <label for="SignInUsername">SignIn : </label>
-                <input type="text"     id="SignInUsername" placeholder="Username">
-                <input type="password" id="SignInPassword" placeholder="Password">
-                <button type="button"  id="SignInButton" onclick="SignIn()">Submit</button>
+                <label for="SignInUsername">Sign In: </label>
+                <input type="text" id="SignInUsername" placeholder="Username" name="SignInUsername">
+                <input type="password" id="SignInPassword" placeholder="Password" name="SignInPassword">
+                <button type="button" id="SignInButton" onclick="SignIn()">Submit</button>
             </form>
         </div>
     </div>
 
-    <div class="add todo">
+    <!-- Todo Application Section -->
+    <div class="todo-container">
         <h1 id="AppName">Todo App</h1>
         <hr>
 
-        <input type="text" id="AddTodoContent" placeholder="Add Todos">
-        <button type="button" onclick="AddTodo()">Add Todo</button>
+        <!-- Add Todo -->
+        <div class="add-todo">
+            <input type="text" id="AddTodoContent" placeholder="Add Todo">
+            <button type="button" onclick="AddTodo()">Add Todo</button>
+        </div>
         <hr>
         
-    </div>
+        <!-- Todo List Display -->
+        <div class="todo-list">
+            <h2>Todo List:</h2>
+            <div id="DisplayContent"></div>
+        </div>
 
-<!-- -------------------------------------------- -->
-    <div>
-        <h1>Todo List: </h1>
-        <div id="DisplayContent"></div>
-    </div>
-
-
-
-    <div>
+        <!-- Logout Button -->
         <button onclick="Logout()">Logout</button>
     </div>
-    
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
